@@ -1,0 +1,11 @@
+{
+  "name": "ds-access-tokens",
+  "version": "1.0.0",
+  "description": "verify and pass current user from auth service",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.1"
+  }
+}
