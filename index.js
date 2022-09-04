@@ -6,23 +6,25 @@ module.exports = async function validateDSAccessTokens(
   const axios = require("axios");
   require("dotenv").config();
 
+  
+
   const accessToken = request.headers.access_token;
   const baseURL = process.env.DREAMER_CODES_AUTH_SERVICE__BASE_URL;
 
   if (!Boolean(accessToken)) {
     response.status(403);
-    return {
+    return response.send({
       msg: "Authentication failed",
       desc: "Access token not found",
-    };
+    });
   }
 
   if (!Boolean(baseURL)) {
     response.status(403);
-    return {
+    return response.send({
       msg: "Authentication failed",
       desc: "Middleware url improperly configured",
-    };
+    });
   }
 
   const axiosInstance = axios.create({
@@ -50,9 +52,9 @@ module.exports = async function validateDSAccessTokens(
     })
     .catch((e) => {
       response.status(403);
-      return {
+      return response.send({
         msg: "User validation failed",
         desc: e,
-      };
+      });
     });
 };
